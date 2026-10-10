@@ -3,12 +3,13 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"go-hello/helpers"
 	"net/http"
 )
 
 type User struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
+	ID    int    `json:"id"`
+	Name  string `json:"name"`
 	Email string `json:"email"`
 }
 
@@ -37,6 +38,12 @@ func getUsersHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+
+	fmt.Println(helpers.HTTP)
+	fmt.Println(helpers.HTTPS)
+	fmt.Println(helpers.PORT_80)
+	fmt.Println(helpers.PORT_90)
+
 	http.HandleFunc("GET /users", getUsersHandler)
 	http.HandleFunc("POST /users/create", createUserHandler)
 
